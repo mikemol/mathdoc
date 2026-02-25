@@ -6,9 +6,9 @@
 
 ## Context
 
-The repository currently has two primary maintainers and a required human PR
-approval policy. We want additional review signal without replacing human
-judgment.
+The repository currently has one human maintainer with AI contributors and no
+standing human peer reviewer. We want additional review signal without
+replacing human judgment.
 
 ## Decision
 

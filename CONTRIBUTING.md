@@ -14,8 +14,11 @@
 
 ## Review Expectations
 
-- One human review is required for PR-required changes.
+- Current mode: one human maintainer (`@mikemol`), so required human peer
+  approval is not expected.
 - Copilot is auto-requested for PRs to `main` (advisory; non-blocking).
+- If another human maintainer is added with write access, require one human
+  approval for PR-required changes.
 - Reviewers check:
   - structure and clarity,
   - factual soundness,

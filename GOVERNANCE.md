@@ -4,7 +4,8 @@
 
 This repository is maintained as a collaborative-open project with light process gates.
 
-- Primary maintainers: current repository owners.
+- Primary human maintainer: `@mikemol` (current single human maintainer).
+- AI collaborators: Codex (implementation support) and Copilot (advisory review).
 - External contribution: welcome through issues and PRs.
 - Decision style: pragmatic, documented, and reversible where possible.
 
@@ -45,5 +46,7 @@ On hosting platform setup (GitHub):
 
 - Protect `main`.
 - Require passing checks (`docs-ci`).
-- Require at least one review for PR-required changes.
 - Keep automatic Copilot review enabled for pull requests to `main`.
+- In single-human mode, required approvals may be set to `0`.
+- If at least two human maintainers have write access, require at least one
+  human review for PR-required changes.
