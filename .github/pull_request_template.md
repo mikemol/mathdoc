@@ -33,3 +33,4 @@ Rationale (required for backward transition):
 - [ ] `bash scripts/validate-frontmatter.sh` passes.
 - [ ] Markdown links are valid.
 - [ ] Relevant indexes updated (`indexes/topic-map.md`, `indexes/reading-paths.md`, `indexes/glossary.md`) when needed.
+- [ ] Copilot review findings addressed or acknowledged.

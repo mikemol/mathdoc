@@ -64,5 +64,6 @@ lychee --offline --verbose --no-progress ./README.md ./content/guides ./content/
 - Trunk-based development on `main`.
 - Short-lived branches: `doc/<slug>` or `chore/<slug>`.
 - PRs required for structural changes, status promotions, major rewrites, new guides, and archive operations.
+- Automatic Copilot review is enabled on PRs to `main` (advisory).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) and [GOVERNANCE.md](GOVERNANCE.md).

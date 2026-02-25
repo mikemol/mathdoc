@@ -20,6 +20,16 @@ This repository is maintained as a collaborative-open project with light process
 - Branches should be short-lived.
 - PR required for structural/high-impact changes.
 
+## AI Review Policy
+
+- Copilot code review is enabled on the default branch through a repository
+  ruleset (`automatic-copilot-review`).
+- Copilot review is advisory and does not replace required human approval.
+- Authors should address substantive Copilot findings in PR updates or explain
+  why a finding was not adopted.
+- Project-specific Copilot context lives in
+  `.github/copilot-instructions.md`.
+
 ## Conflict Resolution
 
 - Resolve disagreements by comparing tradeoffs in PR/ADR text.
@@ -36,3 +46,4 @@ On hosting platform setup (GitHub):
 - Protect `main`.
 - Require passing checks (`docs-ci`).
 - Require at least one review for PR-required changes.
+- Keep automatic Copilot review enabled for pull requests to `main`.

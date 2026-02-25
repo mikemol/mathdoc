@@ -15,11 +15,13 @@
 ## Review Expectations
 
 - One human review is required for PR-required changes.
+- Copilot is auto-requested for PRs to `main` (advisory; non-blocking).
 - Reviewers check:
   - structure and clarity,
   - factual soundness,
   - citation compliance,
   - lifecycle/status correctness.
+- Authors should resolve or respond to substantive Copilot comments before merge.
 
 ## Content Contract
 
