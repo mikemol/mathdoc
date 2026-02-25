@@ -680,7 +680,7 @@ Interpretation:
 Fibrational viewpoints organize “families varying over base contexts”:
 
 * pullback/reindexing expresses substitution,
-* op/cartesian lifts express optimal transport of structure across contexts.
+* opcartesian and cartesian lifts (for opfibrations and fibrations, respectively) express optimal transport of structure across contexts.
 
 This unifies logic (variable contexts), geometry (bundles), and type theory (dependent types).
 
@@ -733,6 +733,12 @@ Univalence expresses that equivalence, not raw equality, is the invariant notion
 * 9 depends on: monoidal categories (extends 2/3)
 * 10 depends on: 9’s tensor intuition + 2/4 functorial semantics
 * 11–13 depend on: the whole toolkit as applied structure
+* 14 depends on: 3 (limits/colimits) + 4 (adjunction schema) + 13 (algorithmic framing)
+* 15 depends on: 5 (representability via Yoneda) + 4 (adjunctions) + 14 (Kan machinery)
+* 16 depends on: 4 (adjunction-generated monads) + 8 (computational monads) + 15 (existence criteria)
+* 17 depends on: 9 (monoidal composition) + 6 (closure/CCC intuition) + 16 (algebra/coalgebra semantics)
+* 18 depends on: 3 (lifting/limit discipline) + 6 (indexed logic) + 17 (enriched hom control)
+* 19 depends on: 2 (composition/naturality base) + 5 (Yoneda invariance) + 18 (fibrational coherence scaffolding)
 
 ---
 
@@ -746,5 +752,12 @@ The former “next leverage” topics are now integrated as the closing structur
 4. Monoidal closed structure and enrichment as hom-level upgrade (Section 17)
 5. Factorization + fibrational organization for map-level control (Section 18)
 6. (\infty)-categorical/HoTT interface for coherence-complete invariance (Section 19)
+
+Reference starting points for Sections 14–19:
+
+* Saunders Mac Lane, *Categories for the Working Mathematician* (2nd ed.)
+* Emily Riehl, *Category Theory in Context*
+* Francis Borceux, *Handbook of Categorical Algebra* (Vols. 1–2)
+* *Homotopy Type Theory: Univalent Foundations of Mathematics*
 
 Reading suggestion for advanced pass: 14 → 15 → 16 as an existence-and-semantics chain, then 17 → 18 → 19 as a coherence-and-higher-structure chain.
