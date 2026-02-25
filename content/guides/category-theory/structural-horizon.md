@@ -8,12 +8,48 @@ created: 2026-02-24
 updated: 2026-02-25
 tags: [category-theory, foundations, reference]
 prerequisites: [basic-set-theory, linear-algebra]
-sources: []
+sources:
+  - title: "Saunders Mac Lane, Categories for the Working Mathematician (2nd ed.)"
+    url: "https://doi.org/10.1007/978-1-4757-4721-8"
+    accessed: 2026-02-25
+  - title: "Emily Riehl, Category Theory in Context"
+    url: "https://math.jhu.edu/~eriehl/context.pdf"
+    accessed: 2026-02-25
+  - title: "Saunders Mac Lane and Ieke Moerdijk, Sheaves in Geometry and Logic"
+    url: "https://doi.org/10.1007/978-1-4612-0927-0"
+    accessed: 2026-02-25
+  - title: "Peter T. Johnstone, Sketches of an Elephant"
+    url: "https://global.oup.com/academic/product/sketches-of-an-elephant-9780198534255"
+    accessed: 2026-02-25
+  - title: "The Stacks Project"
+    url: "https://stacks.math.columbia.edu"
+    accessed: 2026-02-25
+  - title: "Bart Jacobs, Categorical Logic and Type Theory"
+    url: "https://doi.org/10.1016/S0049-237X(08)70266-3"
+    accessed: 2026-02-25
+  - title: "Angelo Vistoli, Grothendieck topologies, fibered categories and descent theory"
+    url: "https://arxiv.org/abs/math/0412512"
+    accessed: 2026-02-25
+  - title: "Bob Coecke, Mehrnoosh Sadrzadeh, Stephen Clark, Mathematical Foundations for a Compositional Distributional Model of Meaning"
+    url: "https://doi.org/10.1111/j.1467-9892.2010.00665.x"
+    accessed: 2026-02-25
+  - title: "Samson Abramsky and Bob Coecke, A Categorical Semantics of Quantum Protocols"
+    url: "https://arxiv.org/abs/quant-ph/0402130"
+    accessed: 2026-02-25
+  - title: "Brendan Fong and David I. Spivak, Seven Sketches in Compositionality"
+    url: "https://arxiv.org/abs/1803.05316"
+    accessed: 2026-02-25
+  - title: "Catlab.jl Documentation"
+    url: "https://algebraicjulia.github.io/Catlab.jl/dev/"
+    accessed: 2026-02-25
+  - title: "Homotopy Type Theory: Univalent Foundations of Mathematics"
+    url: "https://homotopytypetheory.org/book/"
+    accessed: 2026-02-25
 ---
 
 ## The Structural Horizon
 
-### A Comprehensive, Interlocking Report on Category Theory (enriched edition)
+### A Comprehensive, Interlocking Report on Category Theory (integrated leverage edition)
 
 ### How to use this document
 
@@ -23,13 +59,19 @@ Category theory is easiest to learn as a **spiral**: each pass adds power while 
 * **If you’re intermediate:** add Sections 6 → 8, then selectively: 7 (SDG), 9 (CQM), 10 (NLP).
 * **If you’re graduate-level:** treat each section as a *portal*: the “Bridge” and “Invariants” bullets at the end of subsections tell you what must stay true as you generalize (to enriched categories, ∞-categories, toposes, etc.).
 
-Throughout, each section:
+Throughout, each section and subsection is written to do two things at once:
+
+* **push forward** (provide the minimal next abstraction needed downstream), and
+* **pull backward** (re-interpret what you already learned in a sharper way).
+
+Operationally, each unit:
 
 1. **declares** the new objects and the goal,
 2. **commits** the viewpoint (what we will treat as primitive),
 3. **transforms** earlier ideas into this viewpoint,
 4. **verifies invariants** (what must still hold),
-5. **promotes** the new viewpoint as a reusable tool for later sections.
+5. **promotes** the new viewpoint as a reusable tool for later sections,
+6. **loops back** to refine prior sections with stricter invariants.
 
 ---
 
@@ -224,6 +266,17 @@ This is the first place category theory gives you genuine **leverage**: a single
 
 ---
 
+### 3.5 Initial and terminal objects as nullary limit/colimit anchors
+
+An object (0) is **initial** if for every (X) there is a unique arrow (0\to X); an object (1) is **terminal** if for every (X) there is a unique arrow (X\to 1). Categorically, they are the colimit and limit of the empty diagram, respectively (Mac Lane; Riehl). This is the minimal nontrivial case of universality: “universal among no constraints” still yields strong structure.
+
+Concrete effect: once you internalize these as nullary universal constructions, larger limits/colimits stop feeling like separate gadgets. Products are binary limits, pullbacks are constrained binary limits, and terminal objects are the degenerate endpoint of the same pattern. In many settings, initial and terminal coincide (a zero object), giving canonical zero maps and tightening additive-style reasoning.
+
+**Bridge backward:** this sharpens Section 2’s object/morphism grammar by showing how existence/uniqueness alone already imposes global shape.
+**Bridge forward:** Section 4 adjunctions and Section 20 sheaf glueing both reuse this “specify by universal arrows” strategy at higher complexity.
+
+---
+
 ## 4. Adjunctions: the engine that generates structure
 
 ### 4.1 The hom-set definition
@@ -275,6 +328,21 @@ A pragmatic interpretation:
 This “best” is not heuristic; it’s the universal property embodied in the hom-set bijection.
 
 **Bridge to later:** monads (Section 8) are adjunctions compressed into an endofunctor + algebraic laws; toposes (Section 6) internalize logic via adjoints to pullback.
+
+---
+
+### 4.4 Canonical adjunction patterns
+
+Three adjunction templates recur across mathematics and computation (Mac Lane; Riehl; Johnstone):
+
+* **Free/forgetful:** algebraic structure is added minimally on the left and forgotten on the right.
+* **Tensor-hom / currying:** “pair with (A)” is left adjoint to “maps out of (A),” turning multi-input behavior into internal function objects.
+* **Quantifiers vs pullback:** in categorical logic, substitution/reindexing sits between existential and universal adjoints when conditions are met.
+
+Concrete effect: these are not isolated examples but a recognition toolkit. When a new construction looks like “best way to add structure,” “best observer,” or “substitute then summarize,” you can often predict laws, coherence obligations, and computational factorization before writing details.
+
+**Bridge backward:** this operationalizes Section 4.1’s hom-set definition into a pattern language you can apply on sight.
+**Bridge forward:** Sections 15, 21, and 22 repeatedly instantiate these templates as existence theorems, transport laws, and descent mechanisms.
 
 ---
 
@@ -346,6 +414,17 @@ In many toposes, logic is **intuitionistic**: (P\vee \neg P) need not hold. This
 * negation corresponds to interior-of-complement behavior rather than crisp complement.
 
 **Invariant to keep:** the internal language is sound precisely because its rules are forced by categorical structure (limits, exponentials, (\Omega)), not by adding axioms ad hoc.
+
+---
+
+### 6.4 Grothendieck toposes, sites, and geometric context
+
+Beyond elementary axioms, a **Grothendieck topos** is typically presented as sheaves on a site: (\mathbf{Sh}(\mathcal{C},J)). This realizes topos structure from explicit local coverage data and geometric descent rules (Mac Lane–Moerdijk; Johnstone; Stacks). It is where “topos as generalized universe of sets” and “topos as sheaf-theoretic geometry” become the same object from two interfaces.
+
+Concrete effect: site choice becomes a modeling parameter for locality. The same underlying category can carry different topologies and therefore different notions of truth, glueing, and observability. Grothendieck’s petit/gros contrast is exactly this scaling move: local geometry around one space versus geometric reasoning over a broader base of objects.
+
+**Bridge backward:** this reframes Sections 3 and 5 as infrastructure for local-to-global assembly, not merely abstract definitions.
+**Bridge forward:** Sections 20–22 make this explicit by treating sites, geometric morphisms, and descent as the main control surface of advanced topos semantics.
 
 ---
 
@@ -478,6 +557,23 @@ So sentence meaning is computed by the *same* compositional structure that verif
 
 ---
 
+### 10.3 QNLP as DisCoCat-on-circuits
+
+Quantum NLP (QNLP) takes DisCoCat’s functorial pipeline and targets quantum process categories instead of only classical vector-space execution: grammatical reductions compile to circuit structure while lexical meaning is encoded into parameterized states/operators (Coecke–Sadrzadeh–Clark; Abramsky–Coecke). The compositional map stays categorical; only the execution substrate changes.
+
+Concrete effect: sentence interpretation becomes a staged transformation:
+
+1. parse in a categorial grammar,
+2. map to tensor-network structure via a meaning functor,
+3. realize contractions as quantum-compatible circuits.
+
+This does not guarantee quantum advantage by itself; it guarantees semantic compositionality survives hardware translation.
+
+**Bridge backward:** this tightens Section 9’s process calculus and Section 10.2’s syntax-to-semantics functor into one implementation pathway.
+**Bridge forward:** Section 13’s tooling perspective can now treat NLP pipelines as compositional model assembly, not just bespoke ML architecture.
+
+---
+
 ## 11. Cognitive science: systematicity as universality
 
 Systematicity (“if you get ‘John loves Mary’ you get ‘Mary loves John’”) is naturally expressed as:
@@ -527,6 +623,275 @@ A high-leverage practice:
 
 This is the same structural move that powered Sections 3–5, now applied as a design methodology.
 
+**Bridge backward:** software architecture now retroactively clarifies why universal properties were introduced before implementation details.
+**Bridge forward:** the remaining sections turn these patterns into existence, higher-structure, and homotopical control tools.
+
+---
+
+### 13.3 Catlab/AlgebraicJulia and compositional model assembly
+
+Catlab and the broader AlgebraicJulia ecosystem instantiate category-theoretic modeling as executable infrastructure: schemas as categories, data/models as (co)presheaf-like objects, and composition via universal constructions such as pushouts/colimits (Spivak et al.; Catlab docs). This turns “diagram first, implementation second” into a concrete engineering workflow.
+
+Concrete effect: heterogeneous models can be joined along typed interfaces rather than manually reconciled in ad hoc glue code. You define overlap semantics once (shared subdiagram), compute the colimit, and inherit consistency constraints from the construction itself. The result is reusable model architecture where correctness conditions are structural, testable, and portable across domains.
+
+**Bridge backward:** this operationalizes Sections 3–5 and 10 as software methodology, not metaphor.
+**Bridge forward:** Sections 14–22 can be read as increasingly powerful compiler passes for semantic transport, glueing, and coherence management.
+
+---
+
+## 14. Kan extensions: universal transport of semantics
+
+### 14.1 Left and right Kan extensions as best possible continuation
+
+Given (K:\mathcal{C}\to\mathcal{D}) and (F:\mathcal{C}\to\mathcal{E}), a left Kan extension (\mathrm{Lan}_K F) is the universal way to extend (F) along (K). Dually, (\mathrm{Ran}_K F) is the universal right extension.
+
+Think of this as the master pattern for:
+
+* extending a model from generators to all objects,
+* compiling local definitions into global semantics,
+* approximating unavailable constructions with universal surrogates.
+
+**Refines previous:** Section 3’s limits/colimits become pointwise formulas for Kan extensions; Section 4’s adjunctions become special Kan phenomena.
+**Leverages next:** representability and adjoint existence (Section 15) are often proved by showing suitable Kan constructions exist and are preserved.
+
+---
+
+### 14.2 Pointwise formulas and computational leverage
+
+When (\mathcal{E}) is complete/cocomplete enough:
+
+* (\mathrm{Lan}_K F)(d) often computes as a colimit over (K\downarrow d),
+* (\mathrm{Ran}_K F)(d) often computes as a limit over (d\downarrow K).
+
+So “global extension” reduces to local diagram solving.
+
+**Refines previous:** this turns Section 13’s engineering workflow into an explicit algorithm schema: choose indexing comma categories, then solve limits/colimits.
+**Leverages next:** these pointwise computations are the practical doorway to adjoint functor theorems and monadicity tests.
+
+---
+
+## 15. Representability and adjoint existence
+
+### 15.1 Representable functors as existence detectors
+
+A functor (H:\mathcal{C}^{op}\to\mathbf{Set}) is representable when (H\cong \mathrm{Hom}(-,A)) for some (A). This upgrades Yoneda from classification to construction:
+
+* to build an object, prove a moduli functor is representable;
+* to prove uniqueness, use Yoneda-style naturality.
+
+**Refines previous:** Section 5 now becomes a method for proving existence, not only identity up to isomorphism.
+**Leverages next:** adjoint functor theorems package representability conditions into high-level criteria for when left/right adjoints must exist.
+
+---
+
+### 15.2 Adjoint functor theorems as infrastructure
+
+Freyd-style criteria (solution sets + completeness/well-poweredness hypotheses) convert hard constructive questions into structural checks.
+
+Practical reading:
+
+* “Does this forgetful functor have a left adjoint?” becomes an existence theorem question.
+* “Can I freely add this structure?” becomes representability + smallness management.
+
+**Refines previous:** Section 4’s adjunctions become less ad hoc and more inevitable.
+**Leverages next:** once adjunctions exist, monads/comonads and algebra/coalgebra semantics (Section 16) follow canonically.
+
+---
+
+## 16. Monads, comonads, algebra, and coalgebra
+
+### 16.1 Symmetry: building vs observing
+
+Monads organize ways of *building/computing with context*; comonads organize ways of *observing/deconstructing in context*.
+
+* Monad algebras: ways to interpret or collapse computational structure.
+* Comonad coalgebras: ways to unfold behaviors, streams, or context-dependent observations.
+
+**Refines previous:** Section 8 gains a dual half; effectful programming and observational semantics are treated as a matched pair.
+**Leverages next:** this dual control naturally demands enriched and monoidal-closed settings where homs carry internal structure (Section 17).
+
+---
+
+### 16.2 Eilenberg–Moore and Kleisli as semantic factorizations
+
+Every monad yields:
+
+* a Kleisli category (composition of effectful arrows),
+* an Eilenberg–Moore category (algebraic models of the effect).
+
+Likewise, comonads yield co-Kleisli and coalgebraic views. This gives a principled way to compare operational and denotational semantics.
+
+**Refines previous:** Section 13’s “compilation passes as functors” now factors through canonical intermediate categories.
+**Leverages next:** these factorizations are cleaner when hom-objects are enriched, not just sets.
+
+---
+
+## 17. Monoidal closed categories and enrichment
+
+### 17.1 Internal hom and closed structure
+
+In a monoidal closed category, tensoring with (A) has a right adjoint:
+[
+-\otimes A \dashv [A,-].
+]
+This generalizes cartesian closure and gives a resource-sensitive function space.
+
+**Refines previous:** Section 9’s process tensor now acquires a precise internal notion of “maps as objects,” tightening protocol semantics.
+**Leverages next:** enriched categories replace hom-sets with hom-objects, preparing higher-dimensional coherence control.
+
+---
+
+### 17.2 Enriched categories as precision upgrade
+
+For a monoidal base (\mathcal{V}), a (\mathcal{V})-enriched category has hom-objects in (\mathcal{V}) rather than plain sets.
+
+Examples:
+
+* metric spaces as ([0,\infty])-enriched categories,
+* preorders as (\mathbf{Bool})-enriched categories,
+* linear semantics as (\mathbf{Vect})-enriched categories.
+
+**Refines previous:** Sections 2 and 5 are upgraded: composition and Yoneda persist, but now with enriched hom calculus.
+**Leverages next:** enriched structure feeds directly into factorization/fibration machinery and then into (\infty)-categorical contexts.
+
+---
+
+## 18. Factorization systems and fibrational organization
+
+### 18.1 Orthogonal factorization systems
+
+An orthogonal factorization system ((\mathcal{E},\mathcal{M})) factors each arrow as
+[
+f = m\circ e,
+]
+with (e\in\mathcal{E}), (m\in\mathcal{M}), and a lifting orthogonality condition.
+
+Interpretation:
+
+* one class captures “essential generation,”
+* the other captures “structured embedding/observation.”
+
+**Refines previous:** universal constructions in Sections 3–4 become tractable by decomposing maps into controlled phases.
+**Leverages next:** this decomposition discipline is indispensable in model structures and higher categories.
+
+---
+
+### 18.2 Fibrations, cofibrations, and indexed semantics
+
+Fibrational viewpoints organize “families varying over base contexts”:
+
+* pullback/reindexing expresses substitution,
+* opcartesian and cartesian lifts (for opfibrations and fibrations, respectively) express optimal transport of structure across contexts.
+
+This unifies logic (variable contexts), geometry (bundles), and type theory (dependent types).
+
+**Refines previous:** Section 6’s internal logic becomes externally controllable via indexed/category-over-base machinery.
+**Leverages next:** higher categorical and homotopical semantics (Section 19) can be read as fibrational coherence at all dimensions.
+
+---
+
+## 19. Higher categories and homotopy type interface
+
+### 19.1 Why 1-categorical equality is too strict
+
+In many settings, equations should hold only up to specified higher equivalences. (\infty)-categories encode this by retaining all higher morphisms and coherence data.
+
+The guiding replacement is:
+
+* strict equality of composites
+  \(\leadsto\)
+* equivalence with coherent higher witnesses.
+
+**Refines previous:** Section 2’s axioms are reinterpreted as lowest-level shadows of a richer coherence tower.
+**Leverages next:** this perspective reframes Yoneda, adjunctions, and limits as homotopy-invariant constructions.
+
+---
+
+### 19.2 Homotopy type theory bridge
+
+Homotopy type theory internalizes higher-categorical intuitions:
+
+* types as spaces/(\infty)-groupoids,
+* terms as points,
+* identity proofs as paths/homotopies.
+
+Univalence expresses that equivalence, not raw equality, is the invariant notion of sameness.
+
+**Refines previous:** Sections 11–12 gain a precise language for structural identity and cognitive invariants up to equivalence.
+**Leverages the whole report:** the full ladder now closes: relation-first foundations, universal construction, logic, computation, physics, language, and philosophy are all instances of coherence-managed structure transfer.
+
+---
+
+## 20. Sheaves and sites: local data, global objects
+
+### 20.1 Grothendieck topologies and covering sieves
+
+A **site** is a category (\mathcal{C}) equipped with a Grothendieck topology (J): for each object, (J) specifies which sieves count as covers, subject to stability and locality axioms. This replaces point-level open covers with a purely morphism-level notion of “jointly sufficient observation” (Mac Lane–Moerdijk; Stacks).
+
+Concrete effect: the same local-to-global logic from topology can be ported to algebraic and arithmetic contexts by changing what counts as a cover. Instead of asking “which open sets cover this space?”, we ask “which families of arrows into this object carry enough information after base change?”
+
+**Refines previous:** Section 6’s topos viewpoint gains an external presentation mechanism; Section 3’s pullback discipline becomes the stability law for covers.
+**Leverages next:** the sheaf condition and sheafification machinery in Section 20.2, then transport across sites/toposes in Section 21.
+
+---
+
+### 20.2 Sheaf condition and sheafification as a left-exact reflection
+
+For a site ((\mathcal{C},J)), a presheaf (F:\mathcal{C}^{op}\to\mathbf{Set}) is a sheaf when compatible local sections along a covering sieve glue uniquely; categorically, this is an equalizer-style matching condition over the cover and its overlaps. Sheafification is the left adjoint to inclusion (\mathbf{Sh}(\mathcal{C},J)\hookrightarrow \mathbf{PSh}(\mathcal{C})) and in Grothendieck settings is left exact (Mac Lane–Moerdijk; Stacks).
+
+Concrete effect: sheafification is a structural repair pass. You can write quick local models as presheaves, then force exact glueing without changing finite-limit behavior. This makes “local prototype, global correction” mathematically precise.
+
+**Refines previous:** Section 3’s equalizers and Section 14’s Kan-extension workflow become explicit local-to-global algorithms.
+**Leverages next:** geometric morphisms in Section 21 treat sheaf/topos translation itself as adjoint transport; Section 22 lifts glueing from sets to object-valued semantics.
+
+---
+
+## 21. Geometric morphisms: transport of structure and logic
+
+### 21.1 The adjoint triple viewpoint (where available): f_! ⊣ f^* ⊣ f_*
+
+A geometric morphism (f:\mathcal{E}\to\mathcal{F}) is determined by an inverse-image functor (f^*:\mathcal{F}\to\mathcal{E}) that is left exact and has a right adjoint (f_*). In essential cases, (f^*) also has a left adjoint (f_!), yielding (f_!\dashv f^*\dashv f_*) and separating extension, reindexing, and aggregation roles (Johnstone; Mac Lane–Moerdijk).
+
+Concrete effect: this gives a transport calculus for logic-bearing structure. Pull predicates/types/contexts with (f^*), summarize with (f_*), and where available use (f_!) for compact-support-style extension. Left exactness of (f^*) is the guarantee that finite-limit structure survives transit.
+
+**Refines previous:** Section 4’s adjunction language and Section 6’s internal logic become inter-topos semantics, not isolated constructions.
+**Leverages next:** Section 21.2’s Beck–Chevalley/Frobenius laws become verification contracts for these transports and feed descent in Section 22.
+
+---
+
+### 21.2 Beck–Chevalley/Frobenius patterns as invariance tests
+
+Beck–Chevalley compares mates across pullback squares to assert that reindexing commutes with quantified/direct-image behavior; Frobenius reciprocity asserts compatibility between existential-style pushforward and pullback/tensor-like conjunction. Together, they are coherence equations for “transport then aggregate” versus “aggregate then transport” (Johnstone; Jacobs).
+
+Concrete effect: in indexed semantics these are pass/fail tests for semantic refactors. If Beck–Chevalley fails, substitution and quantification drift apart across contexts; if Frobenius fails, resource-sensitive conjunction no longer tracks existential transport correctly.
+
+**Refines previous:** Section 18’s fibrational perspective gets explicit equations for when context transfer is sound.
+**Leverages next:** effective descent and stack glueing in Section 22 require exactly this transport coherence to make local equivalences global.
+
+---
+
+## 22. Descent and stacks: glueing up to coherent isomorphism
+
+### 22.1 Cech descent data and effective descent
+
+Given a cover (U\to X), descent data assigns local objects over the Cech nerve (U, U\times_X U, \dots) with cocycle compatibility on overlaps. Descent is **effective** when every compatible local datum is induced by a global object, uniquely up to canonical isomorphism (Stacks; Vistoli).
+
+Concrete effect: this upgrades sheaf glueing from values to structured objects. Vector bundles, torsors, and similar data are built from transition isomorphisms obeying cocycle laws; the descent criterion tells you when those local specifications are not just consistent, but globally realizable.
+
+**Refines previous:** Section 20’s sheaf condition is lifted from set-valued matching to object-level reconstruction.
+**Leverages next:** Section 22.2 packages descent functorially via fibered categories and stacks, where coherence is first-class data.
+
+---
+
+### 22.2 Fibered categories and stacks as 2-categorical glueing
+
+A category fibered in groupoids over a site encodes families of objects varying over bases with pullback along morphisms. It is a **stack** when isomorphism presheaves are sheaves and descent data is effective; glueing is then stable only up to coherent isomorphism, so the ambient logic is genuinely 2-categorical (Vistoli; Stacks).
+
+Concrete effect: moduli problems with automorphisms cannot be represented faithfully by sheaves of sets. Stacks retain symmetry data while still supporting local-to-global assembly, turning quotients and classification problems into structured descent rather than brittle pointwise identification.
+
+**Refines previous:** Section 19’s “equality is too strict” principle becomes operational in everyday geometric classification.
+**Leverages next:** post-22 expansions into derived and higher algebraic geometry become direct continuations of this coherence-managed descent layer.
+
 ---
 
 ## Appendix A: A dependency map (what each section *needs*)
@@ -541,18 +906,37 @@ This is the same structural move that powered Sections 3–5, now applied as a d
 * 9 depends on: monoidal categories (extends 2/3)
 * 10 depends on: 9’s tensor intuition + 2/4 functorial semantics
 * 11–13 depend on: the whole toolkit as applied structure
+* 14 depends on: 3 (limits/colimits) + 4 (adjunction schema) + 13 (algorithmic framing)
+* 15 depends on: 5 (representability via Yoneda) + 4 (adjunctions) + 14 (Kan machinery)
+* 16 depends on: 4 (adjunction-generated monads) + 8 (computational monads) + 15 (existence criteria)
+* 17 depends on: 9 (monoidal composition) + 6 (closure/CCC intuition) + 16 (algebra/coalgebra semantics)
+* 18 depends on: 3 (lifting/limit discipline) + 6 (indexed logic) + 17 (enriched hom control)
+* 19 depends on: 2 (composition/naturality base) + 5 (Yoneda invariance) + 18 (fibrational coherence scaffolding)
+* 20 depends on: 3 (pullback/cover stability) + 6 (topos semantics) + 14 (Kan-style extension intuition)
+* 21 depends on: 4 (adjunction calculus) + 6 (internal logic transport) + 20 (site/sheaf infrastructure)
+* 22 depends on: 18 (fibrational/indexed discipline) + 20 (sheaf glueing) + 21 (transport coherence tests)
 
 ---
 
-## Appendix B: “Next leverage” topics to extend this report further
+## Appendix B: Integrated leverage checklist and next frontier
 
-If you want the *next* structural jump (and you almost certainly do), the natural additions are:
+### Completed arc (14–19)
 
-1. **Kan extensions** (the universal tool for “best approximation of functors”)
-2. **Representability** and the **adjoint functor theorem** (when do adjoints exist?)
-3. **(Co)monads + algebra/coalgebra** (effects + observations symmetry)
-4. **Monoidal closed categories** and **enrichment** (generalized hom-objects)
-5. **Factorization systems** and **(co)fibrations** (structuring “maps” themselves)
-6. **∞-categories / homotopy type theory interface** (Yoneda and equivalence at higher dimensions)
+This arc is now integrated and forms the first graduate-level closure layer:
 
-If you tell me which of those you want emphasized (or if you want all of them), I’ll splice them into the report so they *tighten* earlier sections rather than just “adding more pages.”
+1. Kan extensions as universal semantic transport (Section 14)
+2. Representability + adjoint functor theorems as existence infrastructure (Section 15)
+3. Monad/comonad symmetry with algebra/coalgebra semantics (Section 16)
+4. Monoidal closed structure and enrichment as hom-level upgrade (Section 17)
+5. Factorization + fibrational organization for map-level control (Section 18)
+6. (\infty)-categorical/HoTT interface for coherence-complete invariance (Section 19)
+
+### Next frontier (20–22)
+
+The current frontier extends that closure into geometric and descent-level control:
+
+1. Sites and sheafification as explicit local-to-global infrastructure (Section 20), forwarding to geometric transport laws in Section 21.
+2. Geometric morphisms + Beck–Chevalley/Frobenius as invariance contracts (Section 21), forwarding to descent effectiveness in Section 22.
+3. Descent and stacks as coherence-aware glueing of object-valued data (Section 22), forwarding to derived/higher geometric contexts.
+
+Post-22 direction: the next codomain expansion is homotopical and higher algebraic geometry (model/derived/\infty-operadic layers) built directly on Sections 20–22.
