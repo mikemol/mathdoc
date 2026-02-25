@@ -1,0 +1,50 @@
+name: Guide Revision
+description: Propose a revision to a canonical guide
+title: "guide-revision: "
+labels:
+  - content
+  - guide
+body:
+  - type: input
+    id: guide_path
+    attributes:
+      label: Guide path
+      placeholder: "content/guides/category-theory/structural-horizon.md"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: Change type
+      options:
+        - Structural rewrite
+        - Factual correction
+        - Scope extension
+        - Lifecycle/status update
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: Why this change is needed and what risk it addresses.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Concrete criteria for done.
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Source links supporting the revision.
+    validations:
+      required: false

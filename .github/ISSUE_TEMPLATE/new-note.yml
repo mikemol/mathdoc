@@ -1,0 +1,48 @@
+name: New Note
+description: Propose a new atomic note in content/notes
+title: "note: "
+labels:
+  - content
+  - note
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Note title
+      placeholder: "Kan extensions as universal approximation"
+    validations:
+      required: true
+
+  - type: input
+    id: slug
+    attributes:
+      label: Slug
+      placeholder: "kan-extensions-universal-approximation"
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should a reader be able to do after reading this note?
+    validations:
+      required: true
+
+  - type: textarea
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: List required prior concepts.
+      placeholder: "adjunctions, functors, natural transformations"
+    validations:
+      required: true
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Initial sources
+      description: Add source URLs if available.
+      placeholder: "https://..."
+    validations:
+      required: false
