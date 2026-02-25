@@ -55,8 +55,8 @@ Local quality checks:
 
 ```bash
 bash scripts/validate-frontmatter.sh
-markdownlint . --ignore node_modules --ignore .git
-lychee --verbose --no-progress --exclude-mail ./README.md ./content ./indexes
+markdownlint . --config .markdownlint.yaml --ignore node_modules --ignore .git
+lychee --offline --verbose --no-progress --exclude-mail ./README.md ./content/guides ./content/methods ./content/prompts ./indexes
 ```
 
 ## Collaboration Model

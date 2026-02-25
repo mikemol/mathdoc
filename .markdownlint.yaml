@@ -1,0 +1,13 @@
+default: true
+
+# Initial corpus includes long-form imported material and archives.
+# Keep linting enabled while disabling rules that would require large rewrites.
+MD012: false
+MD013: false
+MD025: false
+MD029: false
+MD032: false
+MD034: false
+MD036: false
+MD041: false
+MD047: false

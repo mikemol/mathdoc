@@ -60,5 +60,5 @@ Before opening a PR, run:
 
 ```bash
 bash scripts/validate-frontmatter.sh
-markdownlint . --ignore node_modules --ignore .git
+markdownlint . --config .markdownlint.yaml --ignore node_modules --ignore .git
 ```
