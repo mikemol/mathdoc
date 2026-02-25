@@ -721,6 +721,78 @@ Univalence expresses that equivalence, not raw equality, is the invariant notion
 
 ---
 
+## 20. Sheaves and sites: local data, global objects
+
+### 20.1 Grothendieck topologies and covering sieves
+
+A **site** is a category (\mathcal{C}) equipped with a Grothendieck topology (J): for each object, (J) specifies which sieves count as covers, subject to stability and locality axioms. This replaces point-level open covers with a purely morphism-level notion of “jointly sufficient observation” (Mac Lane–Moerdijk; Stacks).
+
+Concrete effect: the same local-to-global logic from topology can be ported to algebraic and arithmetic contexts by changing what counts as a cover. Instead of asking “which open sets cover this space?”, we ask “which families of arrows into this object carry enough information after base change?”
+
+**Refines previous:** Section 6’s topos viewpoint gains an external presentation mechanism; Section 3’s pullback discipline becomes the stability law for covers.
+**Leverages next:** the sheaf condition and sheafification machinery in Section 20.2, then transport across sites/toposes in Section 21.
+
+---
+
+### 20.2 Sheaf condition and sheafification as a left-exact reflection
+
+For a site ((\mathcal{C},J)), a presheaf (F:\mathcal{C}^{op}\to\mathbf{Set}) is a sheaf when compatible local sections along a covering sieve glue uniquely; categorically, this is an equalizer-style matching condition over the cover and its overlaps. Sheafification is the left adjoint to inclusion (\mathbf{Sh}(\mathcal{C},J)\hookrightarrow \mathbf{PSh}(\mathcal{C})) and in Grothendieck settings is left exact (Mac Lane–Moerdijk; Stacks).
+
+Concrete effect: sheafification is a structural repair pass. You can write quick local models as presheaves, then force exact glueing without changing finite-limit behavior. This makes “local prototype, global correction” mathematically precise.
+
+**Refines previous:** Section 3’s equalizers and Section 14’s Kan-extension workflow become explicit local-to-global algorithms.
+**Leverages next:** geometric morphisms in Section 21 treat sheaf/topos translation itself as adjoint transport; Section 22 lifts glueing from sets to object-valued semantics.
+
+---
+
+## 21. Geometric morphisms: transport of structure and logic
+
+### 21.1 The adjoint triple viewpoint (where available): f_! ⊣ f^* ⊣ f_*
+
+A geometric morphism (f:\mathcal{E}\to\mathcal{F}) is determined by an inverse-image functor (f^*:\mathcal{F}\to\mathcal{E}) that is left exact and has a right adjoint (f_*). In essential cases, (f^*) also has a left adjoint (f_!), yielding (f_!\dashv f^*\dashv f_*) and separating extension, reindexing, and aggregation roles (Johnstone; Mac Lane–Moerdijk).
+
+Concrete effect: this gives a transport calculus for logic-bearing structure. Pull predicates/types/contexts with (f^*), summarize with (f_*), and where available use (f_!) for compact-support-style extension. Left exactness of (f^*) is the guarantee that finite-limit structure survives transit.
+
+**Refines previous:** Section 4’s adjunction language and Section 6’s internal logic become inter-topos semantics, not isolated constructions.
+**Leverages next:** Section 21.2’s Beck–Chevalley/Frobenius laws become verification contracts for these transports and feed descent in Section 22.
+
+---
+
+### 21.2 Beck–Chevalley/Frobenius patterns as invariance tests
+
+Beck–Chevalley compares mates across pullback squares to assert that reindexing commutes with quantified/direct-image behavior; Frobenius reciprocity asserts compatibility between existential-style pushforward and pullback/tensor-like conjunction. Together, they are coherence equations for “transport then aggregate” versus “aggregate then transport” (Johnstone; Jacobs).
+
+Concrete effect: in indexed semantics these are pass/fail tests for semantic refactors. If Beck–Chevalley fails, substitution and quantification drift apart across contexts; if Frobenius fails, resource-sensitive conjunction no longer tracks existential transport correctly.
+
+**Refines previous:** Section 18’s fibrational perspective gets explicit equations for when context transfer is sound.
+**Leverages next:** effective descent and stack glueing in Section 22 require exactly this transport coherence to make local equivalences global.
+
+---
+
+## 22. Descent and stacks: glueing up to coherent isomorphism
+
+### 22.1 Cech descent data and effective descent
+
+Given a cover (U\to X), descent data assigns local objects over the Cech nerve (U, U\times_X U, \dots) with cocycle compatibility on overlaps. Descent is **effective** when every compatible local datum is induced by a global object, uniquely up to canonical isomorphism (Stacks; Vistoli).
+
+Concrete effect: this upgrades sheaf glueing from values to structured objects. Vector bundles, torsors, and similar data are built from transition isomorphisms obeying cocycle laws; the descent criterion tells you when those local specifications are not just consistent, but globally realizable.
+
+**Refines previous:** Section 20’s sheaf condition is lifted from set-valued matching to object-level reconstruction.
+**Leverages next:** Section 22.2 packages descent functorially via fibered categories and stacks, where coherence is first-class data.
+
+---
+
+### 22.2 Fibered categories and stacks as 2-categorical glueing
+
+A category fibered in groupoids over a site encodes families of objects varying over bases with pullback along morphisms. It is a **stack** when isomorphism presheaves are sheaves and descent data is effective; glueing is then stable only up to coherent isomorphism, so the ambient logic is genuinely 2-categorical (Vistoli; Stacks).
+
+Concrete effect: moduli problems with automorphisms cannot be represented faithfully by sheaves of sets. Stacks retain symmetry data while still supporting local-to-global assembly, turning quotients and classification problems into structured descent rather than brittle pointwise identification.
+
+**Refines previous:** Section 19’s “equality is too strict” principle becomes operational in everyday geometric classification.
+**Leverages next:** post-22 expansions into derived and higher algebraic geometry become direct continuations of this coherence-managed descent layer.
+
+---
+
 ## Appendix A: A dependency map (what each section *needs*)
 
 * 2 depends on: none (definitions)
