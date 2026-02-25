@@ -13,7 +13,7 @@ sources: []
 
 ## The Structural Horizon
 
-### A Comprehensive, Interlocking Report on Category Theory (enriched edition)
+### A Comprehensive, Interlocking Report on Category Theory (integrated leverage edition)
 
 ### How to use this document
 
@@ -23,13 +23,19 @@ Category theory is easiest to learn as a **spiral**: each pass adds power while 
 * **If you’re intermediate:** add Sections 6 → 8, then selectively: 7 (SDG), 9 (CQM), 10 (NLP).
 * **If you’re graduate-level:** treat each section as a *portal*: the “Bridge” and “Invariants” bullets at the end of subsections tell you what must stay true as you generalize (to enriched categories, ∞-categories, toposes, etc.).
 
-Throughout, each section:
+Throughout, each section and subsection is written to do two things at once:
+
+* **push forward** (provide the minimal next abstraction needed downstream), and
+* **pull backward** (re-interpret what you already learned in a sharper way).
+
+Operationally, each unit:
 
 1. **declares** the new objects and the goal,
 2. **commits** the viewpoint (what we will treat as primitive),
 3. **transforms** earlier ideas into this viewpoint,
 4. **verifies invariants** (what must still hold),
-5. **promotes** the new viewpoint as a reusable tool for later sections.
+5. **promotes** the new viewpoint as a reusable tool for later sections,
+6. **loops back** to refine prior sections with stricter invariants.
 
 ---
 
@@ -527,6 +533,192 @@ A high-leverage practice:
 
 This is the same structural move that powered Sections 3–5, now applied as a design methodology.
 
+**Bridge backward:** software architecture now retroactively clarifies why universal properties were introduced before implementation details.
+**Bridge forward:** the remaining sections turn these patterns into existence, higher-structure, and homotopical control tools.
+
+---
+
+## 14. Kan extensions: universal transport of semantics
+
+### 14.1 Left and right Kan extensions as best possible continuation
+
+Given (K:\mathcal{C}\to\mathcal{D}) and (F:\mathcal{C}\to\mathcal{E}), a left Kan extension (\mathrm{Lan}_K F) is the universal way to extend (F) along (K). Dually, (\mathrm{Ran}_K F) is the universal right extension.
+
+Think of this as the master pattern for:
+
+* extending a model from generators to all objects,
+* compiling local definitions into global semantics,
+* approximating unavailable constructions with universal surrogates.
+
+**Refines previous:** Section 3’s limits/colimits become pointwise formulas for Kan extensions; Section 4’s adjunctions become special Kan phenomena.
+**Leverages next:** representability and adjoint existence (Section 15) are often proved by showing suitable Kan constructions exist and are preserved.
+
+---
+
+### 14.2 Pointwise formulas and computational leverage
+
+When (\mathcal{E}) is complete/cocomplete enough:
+
+* (\mathrm{Lan}_K F)(d) often computes as a colimit over (K\downarrow d),
+* (\mathrm{Ran}_K F)(d) often computes as a limit over (d\downarrow K).
+
+So “global extension” reduces to local diagram solving.
+
+**Refines previous:** this turns Section 13’s engineering workflow into an explicit algorithm schema: choose indexing comma categories, then solve limits/colimits.
+**Leverages next:** these pointwise computations are the practical doorway to adjoint functor theorems and monadicity tests.
+
+---
+
+## 15. Representability and adjoint existence
+
+### 15.1 Representable functors as existence detectors
+
+A functor (H:\mathcal{C}^{op}\to\mathbf{Set}) is representable when (H\cong \mathrm{Hom}(-,A)) for some (A). This upgrades Yoneda from classification to construction:
+
+* to build an object, prove a moduli functor is representable;
+* to prove uniqueness, use Yoneda-style naturality.
+
+**Refines previous:** Section 5 now becomes a method for proving existence, not only identity up to isomorphism.
+**Leverages next:** adjoint functor theorems package representability conditions into high-level criteria for when left/right adjoints must exist.
+
+---
+
+### 15.2 Adjoint functor theorems as infrastructure
+
+Freyd-style criteria (solution sets + completeness/well-poweredness hypotheses) convert hard constructive questions into structural checks.
+
+Practical reading:
+
+* “Does this forgetful functor have a left adjoint?” becomes an existence theorem question.
+* “Can I freely add this structure?” becomes representability + smallness management.
+
+**Refines previous:** Section 4’s adjunctions become less ad hoc and more inevitable.
+**Leverages next:** once adjunctions exist, monads/comonads and algebra/coalgebra semantics (Section 16) follow canonically.
+
+---
+
+## 16. Monads, comonads, algebra, and coalgebra
+
+### 16.1 Symmetry: building vs observing
+
+Monads organize ways of *building/computing with context*; comonads organize ways of *observing/deconstructing in context*.
+
+* Monad algebras: ways to interpret or collapse computational structure.
+* Comonad coalgebras: ways to unfold behaviors, streams, or context-dependent observations.
+
+**Refines previous:** Section 8 gains a dual half; effectful programming and observational semantics are treated as a matched pair.
+**Leverages next:** this dual control naturally demands enriched and monoidal-closed settings where homs carry internal structure (Section 17).
+
+---
+
+### 16.2 Eilenberg–Moore and Kleisli as semantic factorizations
+
+Every monad yields:
+
+* a Kleisli category (composition of effectful arrows),
+* an Eilenberg–Moore category (algebraic models of the effect).
+
+Likewise, comonads yield co-Kleisli and coalgebraic views. This gives a principled way to compare operational and denotational semantics.
+
+**Refines previous:** Section 13’s “compilation passes as functors” now factors through canonical intermediate categories.
+**Leverages next:** these factorizations are cleaner when hom-objects are enriched, not just sets.
+
+---
+
+## 17. Monoidal closed categories and enrichment
+
+### 17.1 Internal hom and closed structure
+
+In a monoidal closed category, tensoring with (A) has a right adjoint:
+[
+-\otimes A \dashv [A,-].
+]
+This generalizes cartesian closure and gives a resource-sensitive function space.
+
+**Refines previous:** Section 9’s process tensor now acquires a precise internal notion of “maps as objects,” tightening protocol semantics.
+**Leverages next:** enriched categories replace hom-sets with hom-objects, preparing higher-dimensional coherence control.
+
+---
+
+### 17.2 Enriched categories as precision upgrade
+
+For a monoidal base (\mathcal{V}), a (\mathcal{V})-enriched category has hom-objects in (\mathcal{V}) rather than plain sets.
+
+Examples:
+
+* metric spaces as ([0,\infty])-enriched categories,
+* preorders as (\mathbf{Bool})-enriched categories,
+* linear semantics as (\mathbf{Vect})-enriched categories.
+
+**Refines previous:** Sections 2 and 5 are upgraded: composition and Yoneda persist, but now with enriched hom calculus.
+**Leverages next:** enriched structure feeds directly into factorization/fibration machinery and then into (\infty)-categorical contexts.
+
+---
+
+## 18. Factorization systems and fibrational organization
+
+### 18.1 Orthogonal factorization systems
+
+An orthogonal factorization system ((\mathcal{E},\mathcal{M})) factors each arrow as
+[
+f = m\circ e,
+]
+with (e\in\mathcal{E}), (m\in\mathcal{M}), and a lifting orthogonality condition.
+
+Interpretation:
+
+* one class captures “essential generation,”
+* the other captures “structured embedding/observation.”
+
+**Refines previous:** universal constructions in Sections 3–4 become tractable by decomposing maps into controlled phases.
+**Leverages next:** this decomposition discipline is indispensable in model structures and higher categories.
+
+---
+
+### 18.2 Fibrations, cofibrations, and indexed semantics
+
+Fibrational viewpoints organize “families varying over base contexts”:
+
+* pullback/reindexing expresses substitution,
+* op/cartesian lifts express optimal transport of structure across contexts.
+
+This unifies logic (variable contexts), geometry (bundles), and type theory (dependent types).
+
+**Refines previous:** Section 6’s internal logic becomes externally controllable via indexed/category-over-base machinery.
+**Leverages next:** higher categorical and homotopical semantics (Section 19) can be read as fibrational coherence at all dimensions.
+
+---
+
+## 19. Higher categories and homotopy type interface
+
+### 19.1 Why 1-categorical equality is too strict
+
+In many settings, equations should hold only up to specified higher equivalences. (\infty)-categories encode this by retaining all higher morphisms and coherence data.
+
+The guiding replacement is:
+
+* strict equality of composites
+  \(\leadsto\)
+* equivalence with coherent higher witnesses.
+
+**Refines previous:** Section 2’s axioms are reinterpreted as lowest-level shadows of a richer coherence tower.
+**Leverages next:** this perspective reframes Yoneda, adjunctions, and limits as homotopy-invariant constructions.
+
+---
+
+### 19.2 Homotopy type theory bridge
+
+Homotopy type theory internalizes higher-categorical intuitions:
+
+* types as spaces/(\infty)-groupoids,
+* terms as points,
+* identity proofs as paths/homotopies.
+
+Univalence expresses that equivalence, not raw equality, is the invariant notion of sameness.
+
+**Refines previous:** Sections 11–12 gain a precise language for structural identity and cognitive invariants up to equivalence.
+**Leverages the whole report:** the full ladder now closes: relation-first foundations, universal construction, logic, computation, physics, language, and philosophy are all instances of coherence-managed structure transfer.
+
 ---
 
 ## Appendix A: A dependency map (what each section *needs*)
@@ -544,15 +736,15 @@ This is the same structural move that powered Sections 3–5, now applied as a d
 
 ---
 
-## Appendix B: “Next leverage” topics to extend this report further
+## Appendix B: Integrated leverage checklist (now folded into Sections 14–19)
 
-If you want the *next* structural jump (and you almost certainly do), the natural additions are:
+The former “next leverage” topics are now integrated as the closing structural arc:
 
-1. **Kan extensions** (the universal tool for “best approximation of functors”)
-2. **Representability** and the **adjoint functor theorem** (when do adjoints exist?)
-3. **(Co)monads + algebra/coalgebra** (effects + observations symmetry)
-4. **Monoidal closed categories** and **enrichment** (generalized hom-objects)
-5. **Factorization systems** and **(co)fibrations** (structuring “maps” themselves)
-6. **∞-categories / homotopy type theory interface** (Yoneda and equivalence at higher dimensions)
+1. Kan extensions as universal semantic transport (Section 14)
+2. Representability + adjoint functor theorems as existence infrastructure (Section 15)
+3. Monad/comonad symmetry with algebra/coalgebra semantics (Section 16)
+4. Monoidal closed structure and enrichment as hom-level upgrade (Section 17)
+5. Factorization + fibrational organization for map-level control (Section 18)
+6. (\infty)-categorical/HoTT interface for coherence-complete invariance (Section 19)
 
-If you tell me which of those you want emphasized (or if you want all of them), I’ll splice them into the report so they *tighten* earlier sections rather than just “adding more pages.”
+Reading suggestion for advanced pass: 14 → 15 → 16 as an existence-and-semantics chain, then 17 → 18 → 19 as a coherence-and-higher-structure chain.
