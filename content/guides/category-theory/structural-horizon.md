@@ -8,7 +8,43 @@ created: 2026-02-24
 updated: 2026-02-25
 tags: [category-theory, foundations, reference]
 prerequisites: [basic-set-theory, linear-algebra]
-sources: []
+sources:
+  - title: "Saunders Mac Lane, Categories for the Working Mathematician (2nd ed.)"
+    url: "https://doi.org/10.1007/978-1-4757-4721-8"
+    accessed: 2026-02-25
+  - title: "Emily Riehl, Category Theory in Context"
+    url: "https://math.jhu.edu/~eriehl/context.pdf"
+    accessed: 2026-02-25
+  - title: "Saunders Mac Lane and Ieke Moerdijk, Sheaves in Geometry and Logic"
+    url: "https://doi.org/10.1007/978-1-4612-0927-0"
+    accessed: 2026-02-25
+  - title: "Peter T. Johnstone, Sketches of an Elephant"
+    url: "https://global.oup.com/academic/product/sketches-of-an-elephant-9780198534255"
+    accessed: 2026-02-25
+  - title: "The Stacks Project"
+    url: "https://stacks.math.columbia.edu"
+    accessed: 2026-02-25
+  - title: "Bart Jacobs, Categorical Logic and Type Theory"
+    url: "https://doi.org/10.1016/S0049-237X(08)70266-3"
+    accessed: 2026-02-25
+  - title: "Angelo Vistoli, Grothendieck topologies, fibered categories and descent theory"
+    url: "https://arxiv.org/abs/math/0412512"
+    accessed: 2026-02-25
+  - title: "Bob Coecke, Mehrnoosh Sadrzadeh, Stephen Clark, Mathematical Foundations for a Compositional Distributional Model of Meaning"
+    url: "https://doi.org/10.1111/j.1467-9892.2010.00665.x"
+    accessed: 2026-02-25
+  - title: "Samson Abramsky and Bob Coecke, A Categorical Semantics of Quantum Protocols"
+    url: "https://arxiv.org/abs/quant-ph/0402130"
+    accessed: 2026-02-25
+  - title: "Brendan Fong and David I. Spivak, Seven Sketches in Compositionality"
+    url: "https://arxiv.org/abs/1803.05316"
+    accessed: 2026-02-25
+  - title: "Catlab.jl Documentation"
+    url: "https://algebraicjulia.github.io/Catlab.jl/dev/"
+    accessed: 2026-02-25
+  - title: "Homotopy Type Theory: Univalent Foundations of Mathematics"
+    url: "https://homotopytypetheory.org/book/"
+    accessed: 2026-02-25
 ---
 
 ## The Structural Horizon
@@ -876,12 +912,17 @@ Concrete effect: moduli problems with automorphisms cannot be represented faithf
 * 17 depends on: 9 (monoidal composition) + 6 (closure/CCC intuition) + 16 (algebra/coalgebra semantics)
 * 18 depends on: 3 (lifting/limit discipline) + 6 (indexed logic) + 17 (enriched hom control)
 * 19 depends on: 2 (composition/naturality base) + 5 (Yoneda invariance) + 18 (fibrational coherence scaffolding)
+* 20 depends on: 3 (pullback/cover stability) + 6 (topos semantics) + 14 (Kan-style extension intuition)
+* 21 depends on: 4 (adjunction calculus) + 6 (internal logic transport) + 20 (site/sheaf infrastructure)
+* 22 depends on: 18 (fibrational/indexed discipline) + 20 (sheaf glueing) + 21 (transport coherence tests)
 
 ---
 
-## Appendix B: Integrated leverage checklist (now folded into Sections 14–19)
+## Appendix B: Integrated leverage checklist and next frontier
 
-The former “next leverage” topics are now integrated as the closing structural arc:
+### Completed arc (14–19)
+
+This arc is now integrated and forms the first graduate-level closure layer:
 
 1. Kan extensions as universal semantic transport (Section 14)
 2. Representability + adjoint functor theorems as existence infrastructure (Section 15)
@@ -890,11 +931,12 @@ The former “next leverage” topics are now integrated as the closing structur
 5. Factorization + fibrational organization for map-level control (Section 18)
 6. (\infty)-categorical/HoTT interface for coherence-complete invariance (Section 19)
 
-Reference starting points for Sections 14–19:
+### Next frontier (20–22)
 
-* Saunders Mac Lane, *Categories for the Working Mathematician* (2nd ed.)
-* Emily Riehl, *Category Theory in Context*
-* Francis Borceux, *Handbook of Categorical Algebra* (Vols. 1–2)
-* *Homotopy Type Theory: Univalent Foundations of Mathematics*
+The current frontier extends that closure into geometric and descent-level control:
 
-Reading suggestion for advanced pass: 14 → 15 → 16 as an existence-and-semantics chain, then 17 → 18 → 19 as a coherence-and-higher-structure chain.
+1. Sites and sheafification as explicit local-to-global infrastructure (Section 20), forwarding to geometric transport laws in Section 21.
+2. Geometric morphisms + Beck–Chevalley/Frobenius as invariance contracts (Section 21), forwarding to descent effectiveness in Section 22.
+3. Descent and stacks as coherence-aware glueing of object-valued data (Section 22), forwarding to derived/higher geometric contexts.
+
+Post-22 direction: the next codomain expansion is homotopical and higher algebraic geometry (model/derived/\infty-operadic layers) built directly on Sections 20–22.
