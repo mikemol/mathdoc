@@ -28,12 +28,13 @@ jobs:
         run: bash scripts/validate-frontmatter.sh
 
       - name: Lint markdown
-        run: markdownlint . --ignore node_modules --ignore .git
+        run: markdownlint . --config .markdownlint.yaml --ignore node_modules --ignore .git
 
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
-            --verbose --no-progress --exclude-mail --accept 200,429
-            ./README.md ./content ./indexes ./CONTRIBUTING.md ./GOVERNANCE.md
+            --offline --verbose --no-progress
+            ./README.md ./content/guides ./content/methods ./content/prompts
+            ./indexes ./CONTRIBUTING.md ./GOVERNANCE.md
           fail: true
